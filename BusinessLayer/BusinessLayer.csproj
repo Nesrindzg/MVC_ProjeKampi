@@ -5,7 +5,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{97C5FA9A-0B8F-4EDC-99FD-54DE110A58EE}</ProjectGuid>
+    <ProjectGuid>{99688980-59EF-4EB4-9025-78B782758790}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>BusinessLayer</RootNamespace>
@@ -66,11 +66,11 @@
     <Compile Include="ValidationRules\CategoryValidator.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MVC_ProjeKampi\DataAccessLayer\DataAccessLayer.csproj">
+    <ProjectReference Include="..\DataAccessLayer\DataAccessLayer.csproj">
       <Project>{9da6773d-67d0-47b7-ab02-5a730c9c1bde}</Project>
       <Name>DataAccessLayer</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MVC_ProjeKampi\EntityLayer\EntityLayer.csproj">
+    <ProjectReference Include="..\EntityLayer\EntityLayer.csproj">
       <Project>{319ce5ed-0d44-46f3-b7d0-e9800756e2e2}</Project>
       <Name>EntityLayer</Name>
     </ProjectReference>
