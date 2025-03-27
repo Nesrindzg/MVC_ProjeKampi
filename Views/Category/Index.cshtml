@@ -3,27 +3,54 @@
     Layout = null;
 }
 
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
 
-<h3>MVC Kamp Tablo Örneği - Kategori</h3>
+<h3 class="text-center m-3 p-3 bg-primary-subtle">
+    MVC Kamp Tablo Örneği - Kategori
+</h3>
 <br />
 
-<table>
-    <tr>
-        <th>Kategori ID</th>
-        <th>Kategori Adı</th>
-        <th>Kategori Açıklaması</th>
-        <th>Kategori Durumu</th>
-    </tr>
+<table class="table table-bordered text-center table-danger table-hover">
+    <thead class="table-primary">
+        <tr>
+            <th>Kategori ID</th>
+            <th>Kategori Adı</th>
+            <th>Kategori Açıklaması</th>
+            <th>Kategori Durumu</th>
+            <th>Güncelle</th>
+        </tr>
+    </thead>
     <tr>
         <td>1</td>
         <td>Eğitim</td>
         <td>Açıklama</td>
         <td>Aktif</td>
+        <td><button class="btn btn-outline-danger">Güncelle</button></td>
     </tr>
     <tr>
         <td>2</td>
         <td>Spor</td>
         <td>Açıklama</td>
         <td>Aktif</td>
+        <td><button class="btn btn-outline-danger">Güncelle</button></td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>Kitap</td>
+        <td>Açıklama</td>
+        <td>Aktif</td>
+        <td><button class="btn btn-outline-danger">Güncelle</button></td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>Film</td>
+        <td>Açıklama Bekleniyor</td>
+        <td>Aktif</td>
+        <td><button class="btn btn-outline-danger">Güncelle</button></td>
     </tr>
 </table>
+<div class="text-center">
+    <button class="btn btn-outline-success">Yeni Kategori</button>
+    <button class="btn btn-outline-primary">Kategori Listesi</button>
+    <button class="btn btn-outline-danger">Kategori Açıklamaları</button>
+</div>

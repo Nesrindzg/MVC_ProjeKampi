@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 class="display-3 text-center p-3">İstatistik Verileri</h2>
+<div class="container-fluid">
+    <div class="row text-center">
+        <div class="col p-5 m-2 border rounded border-dark  bg-red">
+            <h1 class="display-2">@ViewBag.CountCategory</h1>
+            <p class="font-weight-bold blockquote">Toplam Kategori Sayısı</p>
+        </div>
+        <div class="col p-5 m-2 border rounded border-dark bg-cyan">
+            <h1 class="display-2">@ViewBag.headingYazilim</h1>
+            <p class="font-weight-bold blockquote">Başlık Tablosunda "Yazılım" Kategorisine Ait Başlık Sayısı</p>
+        </div>
+        <div class="col p-5 m-2 border rounded border-dark bg-gray">
+            <h1 class="display-2">@ViewBag.writerName</h1>
+            <p class="font-weight-bold blockquote">Yazar Adında 'a' Harfi Geçen Yazar Sayısı</p>
+        </div>
+    </div>
+    <div class="row text-center">
+        <div class="col p-5 m-2 border rounded border-dark bg-purple">
+            @foreach (var item in ViewBag.maxCategory)
+            {
+                <h1 class="display-2">@item </h1>
+            }
+        <p class="font-weight-bold blockquote">En Fazla Başlığa Sahip Kategori Adı</p>
+        </div>
+        <div class="col p-5 m-2 border rounded border-dark bg-pink">
+            <h1 class="display-2">@ViewBag.statusCategory</h1>
+            <p class="font-weight-bold blockquote">
+                Kategori Tablosunda Durumu True Olan Kategoriler ile False Olan Kategoriler Arasındaki Sayısal Fark
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
+

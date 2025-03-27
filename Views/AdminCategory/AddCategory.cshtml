@@ -1,0 +1,24 @@
+﻿@model EntityLayer.Concrate.Category
+
+@{
+    ViewBag.Title = "AddCategory";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<br />
+@using (Html.BeginForm("AddCategory", "AdminCategory", FormMethod.Post)) //Ekleme silme için kullanılır genelde 1.Action İsmi 2.ÜZerinde Çalıştığın Kontrol İsmi
+{
+    <div class="form-check">
+        @Html.Label("Kategori Adı")
+        @Html.TextBoxFor(x => x.CategoryName, new {@class="form-control"}) <!--TextBox yerine bunu kullanmak daha sağlıklı-->
+        @Html.ValidationMessageFor(x => x.CategoryName)
+        <br /><br />
+        @Html.Label("Açıklama Giriniz")
+        @Html.TextAreaFor(x => x.CategoryDescription, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.CategoryDescription)
+        <br /><br />
+        <button class="btn btn-outline-dark">Kaydet</button>
+    </div>
+}
+

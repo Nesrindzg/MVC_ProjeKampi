@@ -1,0 +1,34 @@
+﻿@model EntityLayer.Concrate.Category 
+
+@{
+    Layout = null;
+}
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+<h1 class="text-center m-3">Yeni Kategori Ekleme Sayfasına Hoşgeldiniz!</h1>
+@using (Html.BeginForm("AddCategory","Category",FormMethod.Post)) //Ekleme silme için kullanılırgenelde 1.Action İsmi 2.ÜZerind ÇAlıştığın Kontrol İsmi
+ {
+    <div class="form-check">
+        @Html.Label("Kategori Adı")
+        @Html.TextBoxFor(x => x.CategoryName) <!--TextBox yerine bunu kullanmak daha sağlıklı-->
+        @Html.ValidationMessageFor(x => x.CategoryName)
+        <br /><br />
+        @Html.Label("Açıklama Giriniz")
+        @Html.TextBoxFor(x => x.CategoryDescription)
+        @Html.ValidationMessageFor(x => x.CategoryDescription)
+        <br /><br />
+        <button>Kaydet</button>
+    </div>
+ }
+
+
+<!--<form class="form-group rounded-3 bg-success text-center p-5 d-block m-5" method="post">-->
+    <!-- method=post : sayfada post olunca çalışacak butona tıklanıldığında-->
+    <!--<input class="form-control w-50 m-auto" type="text" name="CategoryName" placeholder="Kategori Adi" />--> <!-- Burdaki name içinde yazan kolon adı SQL tablosundaki alan ile AYNI olması gerekiyor.-->
+    <!--<input class="form-control w-50 m-auto mt-2" type="text" name="CategoryDescription" placeholder="Açıklama Giriniz" />--> <!-- Burdaki name içinde yazan kolon adı SQL tablosundaki alan ile AYNI olması gerekiyor.-->
+    <!--<div class="w-50 m-auto mt-2">
+        <input type="checkbox" name="CategoryStatus" id="CategoryStatus" value="True" />--> <!--Eğer Seçilirse value True olacak veritabanına o değer gidecek.-->
+        <!--<label class="form-check-label text-light" for="CategoryStatus">Aktif Mi?</label>
+    </div>
+    <button class="btn btn-outline-light m-2 px-5">Ekle</button>
+</form>-->

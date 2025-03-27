@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccessLayer.Abstract
+namespace DataAccessLayer.Abstract // Burdaki I...DAL interfaceleri benim veritabanındaki tabloları temsil ediyor.
 {
     // Bu mantık yanlıştır. Çünkü her sınıf için bir interface ve ona bağlı classlar oluşturup işlemler yapmak kod tekrarını oluşturur.
     // CRUD İşlemleri
