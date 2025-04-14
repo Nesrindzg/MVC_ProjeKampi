@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.EntityFramework
 {
-    class EFContactDAL
+    public class EFContactDAL
     {
     }
 }

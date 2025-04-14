@@ -10,7 +10,7 @@ using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccessLayer.Concrete.Repostories 
+namespace DataAccessLayer.Concrete.Repostories
 {
     public class GenericRepository<T> : IRepository<T> where T : class
     {
@@ -18,11 +18,13 @@ namespace DataAccessLayer.Concrete.Repostories
         DbSet<T> _object; // Hangi tabloyla (entity ile) çalışacaksa o atanır
         public GenericRepository()
         {
-            _object=c.Set<T>(); // Dışarıdan gelen entity neyse onu atadık.
+            _object = c.Set<T>(); // Dışarıdan gelen entity neyse onu atadık.
         }
         public void Delete(T p)
         {
-            _object.Remove(p);
+            var deletedEntity = c.Entry(p); // Entity'e silme işlemi yapar.
+            deletedEntity.State = EntityState.Deleted; // Silinen entity'nin durumu silinmiş olarak ayarlandı.
+            // _object.Remove(p);
             c.SaveChanges();
         }
 
@@ -46,7 +48,9 @@ namespace DataAccessLayer.Concrete.Repostories
 
         public void Insert(T p)
         {
-            _object.Add(p);
+            var addedEntity = c.Entry(p); // Entity'e ekleme işlemi yapar.
+            addedEntity.State = EntityState.Added; // Eklenen entity'nin durumu eklenmiş olarak ayarlandı.
+            // _object.Add(p);
             c.SaveChanges();
         }
 
@@ -62,6 +66,8 @@ namespace DataAccessLayer.Concrete.Repostories
 
         public void Update(T p)
         {
+            var updatedEntity = c.Entry(p); // Entity'e güncelleme işlemi yapar.
+            updatedEntity.State = EntityState.Modified; // Güncellenen entity'nin durumu güncellenmiş olarak ayarlandı.
             c.SaveChanges();
         }
     }
