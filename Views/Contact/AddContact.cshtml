@@ -1,0 +1,16 @@
+﻿@model EntityLayer.Concrate.Contact
+@{
+    ViewBag.Title = "AddContact";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>AddContact</h2>
+
+@using (Html.BeginForm("AddContact", "Contact", FormMethod.Post))
+{
+    @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", placeholder = "Kullanıcı Adını Giriniz" })
+    @Html.TextBoxFor(m => m.UserMail, new { @class = "form-control", placeholder = "Mail Giriniz" })
+    @Html.TextBoxFor(m => m.Subject, new { @class = "form-control", placeholder = "Konuyu Giriniz" })
+    @Html.TextAreaFor(m => m.Message, new { @class = "form-control", placeholder = "Mesajınızı Giriniz" })
+    <button type="submit" class="btn btn-outline-info">Gönder</button>
+}
