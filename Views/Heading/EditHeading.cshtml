@@ -1,0 +1,29 @@
+﻿@model EntityLayer.Concrate.Heading
+@{
+    ViewBag.Title = "EditHeading";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Başlık Bilgilerini Güncelle</h2>
+@using (Html.BeginForm("EditHeading", "Heading", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.HeadingID, "Başlık ID", new { @class = "control-label" })
+        @Html.TextBoxFor(m => m.HeadingID, new { @class = "form-control", @readonly = "readonly" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.HeadingName, "Başlık Adı", new { @class = "control-label" })
+        @Html.TextBoxFor(m => m.HeadingName, new { @class = "form-control" })
+    </div>
+    <div class="form-group d-none">
+        @Html.LabelFor(m => m.HeadingTime, "Başlık Date", new { @class = "control-label" })
+        @Html.TextBoxFor(m => m.HeadingTime, new { @class = "form-control" })
+        @Html.LabelFor(m => m.WriterID, "Başlık Yazarı", new { @class = "control-label" })
+        @Html.TextBoxFor(m => m.WriterID, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Category.CategoryName, "Kategori Bilgisi", new { @class = "control-label" })
+        @Html.DropDownListFor(m => m.CategoryID, (List<SelectListItem>)ViewBag.Categories, new { @class = "form-control" })
+    </div>
+    <button class="btn btn-outline-success">Güncelle</button>
+}

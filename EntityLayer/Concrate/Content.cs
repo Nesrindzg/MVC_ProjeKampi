@@ -17,6 +17,7 @@ namespace EntityLayer.Concrate
         // ContentYazar 
         // ContentBaslik
 
+        public bool ContentStatus { get; set; } // İçerik aktif mi değil mi?
         public int HeadingID { get; set; }
         public virtual Heading Heading { get; set; } // Her içeriğin bir başlığı var
         public int? WriterID { get; set; } // ? nullable yani boş bırakılabilir demek oluyor.

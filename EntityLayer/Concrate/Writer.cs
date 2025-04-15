@@ -17,6 +17,7 @@ namespace EntityLayer.Concrate
         [StringLength(250)] public string WriterImage { get; set; }
         [StringLength(200)] public string WriterMail { get; set; }
         [StringLength(200)] public string WriterPassword { get; set; }
+        public bool WriterStatus { get; set; } // Yazar aktif mi değil mi?
         public ICollection<Content> Contents { get; set; } // İçerik tablosuna referans olacak
         public ICollection<Heading> Headings { get; set; } // Başlık tablosuna referans olacak
 

@@ -31,6 +31,7 @@ namespace MVC_ProjeKampi.Controllers
                                                       Text = x.CategoryName,
                                                       Value = x.CategoryID.ToString()
                                                   }).ToList();
+
             List<SelectListItem> writerValue = (from x in wm.GetList()
                                                   select new SelectListItem
                                                   {
@@ -47,6 +48,34 @@ namespace MVC_ProjeKampi.Controllers
         {
             p.HeadingTime = DateTime.Parse(DateTime.Now.ToShortDateString());
             hm.AddHeading(p);
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ActionResult EditHeading(int id)
+        {
+            List<SelectListItem> categoryValue = (from x in cm.GetList()
+                                                  select new SelectListItem
+                                                  {
+                                                      Text = x.CategoryName,
+                                                      Value = x.CategoryID.ToString()
+                                                  }).ToList();
+            ViewBag.Categories = categoryValue;
+            var headingValue = hm.GetById(id);
+            return View(headingValue);
+        }
+
+        [HttpPost]
+        public ActionResult EditHeading(Heading p)
+        {
+            hm.UpdateHeading(p);
+            return RedirectToAction("Index");
+        }
+        public ActionResult DeleteHeading(int id)
+        {
+            var headingValue = hm.GetById(id);
+            headingValue.HeadingStatus = false;
+            hm.DeleteHeading(headingValue);
             return RedirectToAction("Index");
         }
     }

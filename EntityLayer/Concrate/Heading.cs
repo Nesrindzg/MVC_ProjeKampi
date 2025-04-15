@@ -18,5 +18,6 @@ namespace EntityLayer.Concrate
 
         public int WriterID { get; set; } // Başlığı kim hangi yazar oluşturdu referans alacak.
         public virtual Writer Writer { get; set; }
+        public bool HeadingStatus { get; set; } // Başlık aktif mi değil mi?
     }
 }

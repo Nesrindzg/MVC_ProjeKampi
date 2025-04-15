@@ -19,6 +19,11 @@
         @Html.ValidationMessageFor(m => m.WriterSurname, "", new { @class = "text-danger" })
     </div>
     <div class="form-group">
+        @Html.Label("Yazar Unvanı")
+        @Html.TextBoxFor(m => m.WriterTitle, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.WriterTitle, "", new { @class = "text-danger" })
+    </div>
+    <div class="form-group">
         @Html.Label("Yazar Mail")
         @Html.TextBoxFor(m => m.WriterMail, new { @class = "form-control" })
         @Html.ValidationMessageFor(m => m.WriterMail, "", new { @class = "text-danger" })
@@ -38,5 +43,5 @@
         @Html.TextBoxFor(m => m.WriterAbout, new { @class = "form-control" })
         @Html.ValidationMessageFor(m => m.WriterAbout, "", new { @class = "text-danger" })
     </div>
-    <button class="btn btn-outline-dark">Yazar Ekle</button>
+    <button type="submit" class="btn btn-outline-dark">Yazar Ekle</button>
 }
