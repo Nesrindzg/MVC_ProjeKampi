@@ -55,6 +55,7 @@
     <Compile Include="Abstract\ICategoryDAL.cs" />
     <Compile Include="Abstract\IContactDAL.cs" />
     <Compile Include="Abstract\IContentDAL.cs" />
+    <Compile Include="Abstract\IImageFileDAL.cs" />
     <Compile Include="Abstract\IMessageDAL.cs" />
     <Compile Include="Abstract\IWriterDAL.cs" />
     <Compile Include="Abstract\IHeadingDAL.cs" />
@@ -66,6 +67,7 @@
     <Compile Include="EntityFramework\EFContactDAL.cs" />
     <Compile Include="EntityFramework\EFContentDAL.cs" />
     <Compile Include="EntityFramework\EFHeadingDAL.cs" />
+    <Compile Include="EntityFramework\EFImageFileDAL.cs" />
     <Compile Include="EntityFramework\EFMessageDAL.cs" />
     <Compile Include="EntityFramework\EFWriterDAL.cs" />
     <Compile Include="Migrations\202504101233333_mig_writer_edit.cs" />
@@ -103,6 +105,10 @@
     <Compile Include="Migrations\202504161329028_mig_contact_dateadd.cs" />
     <Compile Include="Migrations\202504161329028_mig_contact_dateadd.Designer.cs">
       <DependentUpon>202504161329028_mig_contact_dateadd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202504161419078_mig_imagefiles.cs" />
+    <Compile Include="Migrations\202504161419078_mig_imagefiles.Designer.cs">
+      <DependentUpon>202504161419078_mig_imagefiles.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -144,6 +150,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202504161329028_mig_contact_dateadd.resx">
       <DependentUpon>202504161329028_mig_contact_dateadd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202504161419078_mig_imagefiles.resx">
+      <DependentUpon>202504161419078_mig_imagefiles.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -135,6 +135,7 @@
     <Compile Include="Controllers\ContentController.cs" />
     <Compile Include="Controllers\DenemeController.cs" />
     <Compile Include="Controllers\ErrorPageController.cs" />
+    <Compile Include="Controllers\GalleryController.cs" />
     <Compile Include="Controllers\HeadingController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MessageController.cs" />
@@ -1980,6 +1981,13 @@
     <Content Include="AdminLTE-3.0.4\plugins\toastr\toastr.min.css" />
     <Content Include="AdminLTE-3.0.4\plugins\toastr\toastr.min.js" />
     <Content Include="AdminLTE-3.0.4\starter.html" />
+    <Content Include="AdminLTE-3.0.4\imgFiles\anasayfa.png" />
+    <Content Include="AdminLTE-3.0.4\imgFiles\kategori.gif" />
+    <Content Include="AdminLTE-3.0.4\imgFiles\musteriler.gif" />
+    <Content Include="AdminLTE-3.0.4\imgFiles\satislar.png" />
+    <Content Include="AdminLTE-3.0.4\imgFiles\urunler.gif" />
+    <Content Include="AdminLTE-3.0.4\imgFiles\yardim.gif" />
+    <Content Include="AdminLTE-3.0.4\imgFiles\yeniSatis.png" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />
@@ -2317,6 +2325,7 @@
     <Content Include="Views\Contact\_ContactTopBox.cshtml" />
     <Content Include="Views\Message\GetMessageRead.cshtml" />
     <Content Include="Views\ErrorPage\Page404.cshtml" />
+    <Content Include="Views\Gallery\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
