@@ -14,5 +14,6 @@ namespace EntityLayer.Concrate
         [StringLength(100)] public string UserMail { get; set; }
         [StringLength(100)] public string Subject { get; set; }
         public string Message { get; set; }
+        public DateTime MessageDate { get; set; }
     }
 }

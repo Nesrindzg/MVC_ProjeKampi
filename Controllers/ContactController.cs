@@ -13,6 +13,7 @@ namespace MVC_ProjeKampi.Controllers
     public class ContactController : Controller
     {
         ContactManager cm = new ContactManager(new EFContactDAL());
+        MessageManager mm = new MessageManager(new EFMessageDAL());
         ContactValidator cv = new ContactValidator();
         public ActionResult Index()
         {
@@ -50,6 +51,21 @@ namespace MVC_ProjeKampi.Controllers
         }
 
         public PartialViewResult _ContactLeftBox()
+        {
+            var contactCount = cm.GetList().Count();
+            ViewBag.contactCount = contactCount;
+
+            var inboxCount = mm.GetListInbox().Count();
+            ViewBag.inboxCount = inboxCount;
+
+            var sendboxCount = mm.GetListSendbox().Where(m=>m.IsDraft==false).Count();
+            ViewBag.sendboxCount = sendboxCount;
+
+            var draftCount = mm.GetListSendbox().Where(m => m.IsDraft == true).Count();
+            ViewBag.draftCount = draftCount;
+            return PartialView();
+        }
+        public PartialViewResult _ContactTopBox()
         {
             return PartialView();
         }

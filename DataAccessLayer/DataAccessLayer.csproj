@@ -55,6 +55,7 @@
     <Compile Include="Abstract\ICategoryDAL.cs" />
     <Compile Include="Abstract\IContactDAL.cs" />
     <Compile Include="Abstract\IContentDAL.cs" />
+    <Compile Include="Abstract\IMessageDAL.cs" />
     <Compile Include="Abstract\IWriterDAL.cs" />
     <Compile Include="Abstract\IHeadingDAL.cs" />
     <Compile Include="Abstract\IRepository.cs" />
@@ -65,6 +66,7 @@
     <Compile Include="EntityFramework\EFContactDAL.cs" />
     <Compile Include="EntityFramework\EFContentDAL.cs" />
     <Compile Include="EntityFramework\EFHeadingDAL.cs" />
+    <Compile Include="EntityFramework\EFMessageDAL.cs" />
     <Compile Include="EntityFramework\EFWriterDAL.cs" />
     <Compile Include="Migrations\202504101233333_mig_writer_edit.cs" />
     <Compile Include="Migrations\202504101233333_mig_writer_edit.Designer.cs">
@@ -89,6 +91,18 @@
     <Compile Include="Migrations\202504151036396_mig_heading_statusadd.cs" />
     <Compile Include="Migrations\202504151036396_mig_heading_statusadd.Designer.cs">
       <DependentUpon>202504151036396_mig_heading_statusadd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202504152020563_mig_newclass_messasgeadd.cs" />
+    <Compile Include="Migrations\202504152020563_mig_newclass_messasgeadd.Designer.cs">
+      <DependentUpon>202504152020563_mig_newclass_messasgeadd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202504161145002_mig_message_addcolumn_isdraft.cs" />
+    <Compile Include="Migrations\202504161145002_mig_message_addcolumn_isdraft.Designer.cs">
+      <DependentUpon>202504161145002_mig_message_addcolumn_isdraft.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202504161329028_mig_contact_dateadd.cs" />
+    <Compile Include="Migrations\202504161329028_mig_contact_dateadd.Designer.cs">
+      <DependentUpon>202504161329028_mig_contact_dateadd.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -121,6 +135,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202504151036396_mig_heading_statusadd.resx">
       <DependentUpon>202504151036396_mig_heading_statusadd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202504152020563_mig_newclass_messasgeadd.resx">
+      <DependentUpon>202504152020563_mig_newclass_messasgeadd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202504161145002_mig_message_addcolumn_isdraft.resx">
+      <DependentUpon>202504161145002_mig_message_addcolumn_isdraft.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202504161329028_mig_contact_dateadd.resx">
+      <DependentUpon>202504161329028_mig_contact_dateadd.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

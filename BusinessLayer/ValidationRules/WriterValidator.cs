@@ -19,7 +19,6 @@ namespace BusinessLayer.ValidationRules
             RuleFor(x => x.WriterAbout).NotEmpty().WithMessage("Hakkımda Boş Geçilemez!");
             RuleFor(x => x.WriterAbout).Must(m=> m!=null && m.ToLower().Contains("a")).WithMessage("Hakkımda a harfi geçmelidir!"); // Hakkımda kısmında a harfi geçmelidir
             RuleFor(x => x.WriterAbout).MaximumLength(100).WithMessage("Lütfen 100 Karakterden Fazla Giriş Yapmayınız.");
-
         }
     }
 }

@@ -9,10 +9,10 @@ namespace BusinessLayer.Abstract
 {
     public interface IWriterSevice
     {
+        void AddWriter(Writer writer);  
+        void DeleteWriter(Writer writer);
+        void UpdateWriter(Writer writer);
         List<Writer> GetList();
-        void WriterAdd(Writer writer);  
-        void WriterDelete(Writer writer);
-        void WriterUpdate(Writer writer);
         Writer GetByID(int id);
     }
 }

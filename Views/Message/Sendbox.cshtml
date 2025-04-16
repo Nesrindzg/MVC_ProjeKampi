@@ -1,6 +1,7 @@
-﻿@model List<EntityLayer.Concrate.Contact>
+﻿@model List<EntityLayer.Concrate.Message>
+
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Sendbox";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
@@ -16,7 +17,7 @@
             <div class="col-md-9">
                 <div class="card card-primary card-outline">
                     <div class="card-header">
-                        <h3 class="card-title">Site İçi Mesajlar</h3>
+                        <h3 class="card-title">Gönderilen Mesajlar</h3>
                         <div class="card-tools">
                             <div class="input-group input-group-sm">
                                 <input type="text" class="form-control" placeholder="Mail Kutusunda Ara">
@@ -55,28 +56,31 @@
                         </div>
                         @foreach (var item in Model)
                         {
-                            <div class="table-responsive mailbox-messages">
-                                <table class="table table-hover table-striped">
-                                    <tbody>
-                                        <tr>
-                                            <td>
-                                                <div class="icheck-primary">
-                                                    <input type="checkbox" value="" id="check1">
-                                                    <label for="check1"></label>
-                                                </div>
-                                            </td>
-                                            <td class="mailbox-star"><a href="#"><i class="fas fa-star text-warning"></i></a></td>
-                                            <td class="mailbox-name"><a href="/Contact/GetContactDetails/@item.ContactID">@item.UserName</a></td>
-                                            <td class="mailbox-subject">
-                                                <b>@item.Subject</b> - @item.Message.Substring(0, Math.Min(item.Message.Length, 30)) ...
-                                            </td>
-                                            <td class="mailbox-attachment"></td>
-                                            <td class="mailbox-date">@item.MessageDate.ToShortDateString()</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <!-- /.table -->
-                            </div>
+                            if (!item.IsDraft)
+                            {
+                                <div class="table-responsive mailbox-messages">
+                                    <table class="table table-hover table-striped">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <div class="icheck-primary">
+                                                        <input type="checkbox" value="" id="check1">
+                                                        <label for="check1"></label>
+                                                    </div>
+                                                </td>
+                                                <td class="mailbox-star"><a href="/Message/GetMessageRead/@item.MessageID"><i class="fas fa-star text-warning"></i></a></td>
+                                                <td class="mailbox-name"><a href="/Message/GetMessageRead/@item.MessageID">@item.ReceiverMail</a></td>
+                                                <td class="mailbox-subject">
+                                                    <b>@item.Subject</b> - @item.MessageContent.Substring(0, Math.Min(item.MessageContent.Length, 30)) ...
+                                                </td>
+                                                <td class="mailbox-attachment"></td>
+                                                <td class="mailbox-date">@item.MessageDate.ToShortDateString()</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <!-- /.table -->
+                                </div>
+                            }
                         }
                         <!-- /.mail-box-messages -->
                     </div>
@@ -115,3 +119,4 @@
 
 </body>
 </html>
+
