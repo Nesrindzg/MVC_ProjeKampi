@@ -15,6 +15,7 @@ namespace MVC_ProjeKampi.Controllers
     {
         // GET: Category
         CategoryManager cm = new CategoryManager(new EFCategoryDAL()); // Business katmanına erişmek için
+
         public ActionResult Index()
         {
             return View();
