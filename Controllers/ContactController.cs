@@ -55,7 +55,7 @@ namespace MVC_ProjeKampi.Controllers
             var contactCount = cm.GetList().Count();
             ViewBag.contactCount = contactCount;
 
-            var inboxCount = mm.GetListInbox().Count();
+            var inboxCount = mm.GetListInbox().Where(m=>m.IsRead==false).Count();
             ViewBag.inboxCount = inboxCount;
 
             var sendboxCount = mm.GetListSendbox().Where(m=>m.IsDraft==false).Count();

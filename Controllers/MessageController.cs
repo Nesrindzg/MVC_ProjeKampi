@@ -78,6 +78,8 @@ namespace MVC_ProjeKampi.Controllers
         public ActionResult GetMessageRead(int id)
         {
             var message = mm.GetById(id);
+            message.IsRead = true;
+            mm.UpdateMessage(message);
             return View(message);
         }
     }

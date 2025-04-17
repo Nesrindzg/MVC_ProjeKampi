@@ -16,7 +16,7 @@ namespace MVC_ProjeKampi.Controllers
     {
         CategoryManager categoryManager = new CategoryManager(new EFCategoryDAL());
        
-        [Authorize] // Yetkilendirme işlemi için
+        [Authorize(Roles="B")] // Yetkilendirme işlemi için
         public ActionResult Index()
         {
             var categoryValues = categoryManager.GetList();

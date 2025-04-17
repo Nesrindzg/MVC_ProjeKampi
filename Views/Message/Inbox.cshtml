@@ -53,32 +53,83 @@
                             </div>
                             <!-- /.float-right -->
                         </div>
-                        @foreach (var item in Model)
-                        {
-                            <div class="table-responsive mailbox-messages">
-                                <table class="table table-hover table-striped">
-                                    <tbody>
-                                        <tr>
-                                            <td>
-                                                <div class="icheck-primary">
-                                                    <input type="checkbox" value="" id="check1">
-                                                    <label for="check1"></label>
-                                                </div>
-                                            </td>
-                                            <td class="mailbox-star"><a href="/Message/GetMessageRead/@item.MessageID"><i class="fas fa-star text-warning"></i></a></td>
-                                            <td class="mailbox-name"><a href="/Message/GetMessageRead/@item.MessageID">@item.SenderMail</a></td>
-                                            <td class="mailbox-subject">
-                                                <b>@item.Subject</b> - @item.MessageContent.Substring(0, Math.Min(item.MessageContent.Length, 30)) ...
-                                            </td>
-                                            <td class="mailbox-attachment"></td>
-                                            <td class="mailbox-date">@item.MessageDate.ToShortDateString()</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <!-- /.table -->
+                        <div class="table-responsive mailbox-messages">
+                            <div class="ml-4 mt-2 mb-2 d-flex align-items-center">
+                                <i class="fas fa-envelope text-danger mr-2"></i>
+                                <h5 class="mb-0 text-danger font-weight-bold">Okunmamış Mesajlar</h5>
                             </div>
-                        }
-                        <!-- /.mail-box-messages -->
+
+                            <table class="table table-hover table-striped">
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        if (!item.IsRead)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    <div class="icheck-primary">
+                                                        <input type="checkbox" value="" id="check_@item.MessageID">
+                                                        <label for="check_@item.MessageID"></label>
+                                                    </div>
+                                                </td>
+                                                <td class="mailbox-star">
+                                                    <a href="/Message/GetMessageRead/@item.MessageID">
+                                                        <i class="fas fa-star text-warning"></i>
+                                                    </a>
+                                                </td>
+                                                <td class="mailbox-name">
+                                                    <a href="/Message/GetMessageRead/@item.MessageID">@item.SenderMail</a>
+                                                </td>
+                                                <td class="mailbox-subject">
+                                                    <b>@item.Subject</b> -
+                                                    @item.MessageContent.Substring(0, Math.Min(item.MessageContent.Length, 30)) ...
+                                                </td>
+                                                <td class="mailbox-date">@item.MessageDate.ToShortDateString()</td>
+                                            </tr>
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+                            <hr />
+                            <!-- Okunmuş Mesajlar -->
+                            <div class="ml-4 mt-5 mb-2 d-flex align-items-center">
+                                <i class="fas fa-envelope-open text-secondary mr-2"></i>
+                                <h5 class="mb-0 text-secondary font-weight-bold">Okunmuş Mesajlar</h5>
+                            </div>
+
+                            <table class="table table-hover table-striped">
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        if (item.IsRead)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    <div class="icheck-primary">
+                                                        <input type="checkbox" value="" id="check_@item.MessageID">
+                                                        <label for="check_@item.MessageID"></label>
+                                                    </div>
+                                                </td>
+                                                <td class="mailbox-star">
+                                                    <a href="/Message/GetMessageRead/@item.MessageID">
+                                                        <i class="fas fa-star text-warning"></i>
+                                                    </a>
+                                                </td>
+                                                <td class="mailbox-name">
+                                                    <a href="/Message/GetMessageRead/@item.MessageID">@item.SenderMail</a>
+                                                </td>
+                                                <td class="mailbox-subject">
+                                                    <b>@item.Subject</b> -
+                                                    @item.MessageContent.Substring(0, Math.Min(item.MessageContent.Length, 30)) ...
+                                                </td>
+                                                <td class="mailbox-date">@item.MessageDate.ToShortDateString()</td>
+                                            </tr>
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+
                     </div>
                     <!-- /.card-body -->
                     <div class="card-footer p-0">

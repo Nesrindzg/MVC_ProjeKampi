@@ -54,12 +54,12 @@
                             </div>
                             <!-- /.float-right -->
                         </div>
-                        @foreach (var item in Model)
-                        {
-                            if (!item.IsDraft)
-                            {
-                                <div class="table-responsive mailbox-messages">
-                                    <table class="table table-hover table-striped">
+                        <div class="table-responsive mailbox-messages">
+                            <table class="table table-hover table-striped">
+                                @foreach (var item in Model)
+                                {
+                                    if (!item.IsDraft)
+                                    {
                                         <tbody>
                                             <tr>
                                                 <td>
@@ -77,14 +77,11 @@
                                                 <td class="mailbox-date">@item.MessageDate.ToShortDateString()</td>
                                             </tr>
                                         </tbody>
-                                    </table>
-                                    <!-- /.table -->
-                                </div>
-                            }
-                        }
-                        <!-- /.mail-box-messages -->
+                                    }
+                                }
+                            </table>
+                        </div>
                     </div>
-                    <!-- /.card-body -->
                     <div class="card-footer p-0">
                         <div class="mailbox-controls">
                             <!-- Check all button -->
