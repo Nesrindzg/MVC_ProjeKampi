@@ -11,5 +11,7 @@ namespace BusinessLayer.Abstract
     {
         Admin Login(string username, string password);
         List<Admin> GetList();
+
+        void UpdateAdmin(Admin admin);
     }
 }

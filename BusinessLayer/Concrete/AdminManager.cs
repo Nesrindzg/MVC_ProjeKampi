@@ -27,5 +27,10 @@ namespace BusinessLayer.Concrete
         {
             return _adminDAL.Get(x => x.AdminUserName == username && x.AdminPassword == password);
         }
+
+        public void UpdateAdmin(Admin admin)
+        {
+            _adminDAL.Update(admin);
+        }
     }
 }

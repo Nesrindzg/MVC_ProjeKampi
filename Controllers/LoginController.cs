@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using System.Web.Helpers;
 
 namespace MVC_ProjeKampi.Controllers
 {
@@ -23,12 +24,16 @@ namespace MVC_ProjeKampi.Controllers
         [HttpPost]
         public ActionResult Index(Admin p)
         {
-            var adminUserInfo = adminManager.GetList().FirstOrDefault(x => x.AdminUserName == p.AdminUserName && x.AdminPassword == p.AdminPassword);
+            var hashedPassword = Crypto.Hash(p.AdminPassword,"MD5");
+            var adminUserInfo = adminManager.GetList().FirstOrDefault(x => x.AdminUserName == p.AdminUserName && x.AdminPassword == hashedPassword);
             if (adminUserInfo != null)
             {
+                //Varolan veritabanındaki password değerini hash haliyle değiştirmek için:
+                //adminUserInfo.AdminPassword = hashedPassword;
+                //adminManager.UpdateAdmin(adminUserInfo);
                 FormsAuthentication.SetAuthCookie(adminUserInfo.AdminUserName, false);
                 Session["AdminUserName"] = adminUserInfo.AdminUserName;
-                return RedirectToAction("Index", "AdminCategory");
+                return RedirectToAction("MySkills", "AdminCategory");
             }
             else
             {
@@ -37,6 +42,5 @@ namespace MVC_ProjeKampi.Controllers
 
             return View();
         }
-
     }
 }
