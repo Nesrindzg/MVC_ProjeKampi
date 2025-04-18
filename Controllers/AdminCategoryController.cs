@@ -15,8 +15,8 @@ namespace MVC_ProjeKampi.Controllers
     public class AdminCategoryController : Controller
     {
         CategoryManager categoryManager = new CategoryManager(new EFCategoryDAL());
-       
-        [Authorize(Roles="B")] // Yetkilendirme işlemi için
+
+        [Authorize(Roles = "B")] // Yetkilendirme işlemi için
         public ActionResult Index()
         {
             var categoryValues = categoryManager.GetList();
@@ -34,7 +34,7 @@ namespace MVC_ProjeKampi.Controllers
         {
             CategoryValidator validations = new CategoryValidator();
             ValidationResult result = validations.Validate(p);
-            if(result.IsValid)
+            if (result.IsValid)
             {
                 categoryManager.CategoryAdd(p);
                 return RedirectToAction("Index");
@@ -46,12 +46,12 @@ namespace MVC_ProjeKampi.Controllers
                     ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
                 }
             }
-                return View();
+            return View();
         }
 
         public ActionResult DeleteCategory(int id)
         {
-            var categoryValue=categoryManager.GetByID(id);
+            var categoryValue = categoryManager.GetByID(id);
             categoryManager.CategoryDelete(categoryValue);
             return RedirectToAction("Index");
         }
@@ -68,6 +68,11 @@ namespace MVC_ProjeKampi.Controllers
         {
             categoryManager.CategoryUpdate(p);
             return RedirectToAction("Index");
+        }
+
+        public ActionResult MySkills()
+        {
+            return View();
         }
     }
 }

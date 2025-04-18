@@ -1996,6 +1996,16 @@
     <Content Include="AdminLTE-3.0.4\plugins\toastr\toastr.css" />
     <Content Include="AdminLTE-3.0.4\plugins\toastr\toastr.min.css" />
     <Content Include="AdminLTE-3.0.4\plugins\toastr\toastr.min.js" />
+    <Content Include="AdminLTE-3.0.4\Skills\css\style.css" />
+    <Content Include="AdminLTE-3.0.4\Skills\images\5.jpg" />
+    <Content Include="AdminLTE-3.0.4\Skills\images\img1.jpg" />
+    <Content Include="AdminLTE-3.0.4\Skills\images\sprite.png" />
+    <Content Include="AdminLTE-3.0.4\Skills\index.html" />
+    <Content Include="AdminLTE-3.0.4\Skills\js\bars.js" />
+    <Content Include="AdminLTE-3.0.4\Skills\js\easyResponsiveTabs.js" />
+    <Content Include="AdminLTE-3.0.4\Skills\js\jquery-1.11.1.min.js" />
+    <Content Include="AdminLTE-3.0.4\Skills\js\jquery.circlechart.js" />
+    <Content Include="AdminLTE-3.0.4\Skills\w3layouts-License.txt" />
     <Content Include="AdminLTE-3.0.4\starter.html" />
     <Content Include="AdminLTE-3.0.4\imgFiles\anasayfa.png" />
     <Content Include="AdminLTE-3.0.4\imgFiles\kategori.gif" />
@@ -2023,6 +2033,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Screenshots\Skills.png" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -2442,6 +2453,7 @@
     <Content Include="Views\ErrorPage\Page404.cshtml" />
     <Content Include="Views\Gallery\Index.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\AdminCategory\MySkills.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
