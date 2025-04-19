@@ -4,6 +4,7 @@ using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrate;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,13 +35,13 @@ namespace BusinessLayer.Concrete
             return _messageDAL.Get(x => x.MessageID == id);
         }
 
-        public List<Message> GetListInbox()
+        public List<Message> GetListInbox(string mail)
         {
-            return _messageDAL.List(x => x.ReceiverMail == "admin@gmail.com");
+            return _messageDAL.List(x => x.ReceiverMail == mail);
         }
-        public List<Message> GetListSendbox()
+        public List<Message> GetListSendbox(string mail)
         {
-            return _messageDAL.List(x => x.SenderMail == "admin@gmail.com");
+            return _messageDAL.List(x => x.SenderMail == mail);
         }
 
         public void UpdateMessage(Message Message)

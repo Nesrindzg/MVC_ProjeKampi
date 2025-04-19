@@ -17,5 +17,6 @@ namespace BusinessLayer.Abstract
         // Read operations
         Heading GetById(int id);
         List<Heading> GetList();
+        List<Heading> GetListByWriter(int id);
     }
 }

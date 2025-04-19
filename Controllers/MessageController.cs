@@ -14,14 +14,15 @@ namespace MVC_ProjeKampi.Controllers
     {
         MessageManager mm = new MessageManager(new EFMessageDAL());
         MessageValidator mv = new MessageValidator();
+        string mail = "admin@gmail.com";
         public ActionResult Inbox()
         {
-            var messageList = mm.GetListInbox();
+            var messageList = mm.GetListInbox(mail);
             return View(messageList);
         }
         public ActionResult Sendbox()
         {
-            var messageList = mm.GetListSendbox();
+            var messageList = mm.GetListSendbox(mail);
             return View(messageList);
         }
 
@@ -66,7 +67,7 @@ namespace MVC_ProjeKampi.Controllers
       
         public ActionResult DraftMessage()
         {
-            var values = mm.GetListSendbox().Where(x => x.IsDraft == true).ToList();
+            var values = mm.GetListSendbox(mail).Where(x => x.IsDraft == true).ToList();
             return View(values);
         }
 

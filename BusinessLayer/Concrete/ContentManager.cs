@@ -43,6 +43,11 @@ namespace BusinessLayer.Concrete
             return _contentDAL.List(x => x.HeadingID == id);
         }
 
+        public List<Content> GetListByWriter(int id)
+        {
+            return _contentDAL.List(x => x.WriterID == id);
+        }
+
         public void UpdateContent(Content content)
         {
             _contentDAL.Update(content);

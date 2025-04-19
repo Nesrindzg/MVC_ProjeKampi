@@ -14,6 +14,7 @@ namespace MVC_ProjeKampi.Controllers
     public class LoginController : Controller
     {
         AdminManager adminManager = new AdminManager(new EFAdminDAL());
+        WriterManager writerManager = new WriterManager(new EFWriterDAL());
 
         [HttpGet]
         public ActionResult Index()
@@ -41,6 +42,37 @@ namespace MVC_ProjeKampi.Controllers
             }
 
             return View();
+        }
+        [HttpGet]
+        public ActionResult WriterLogin()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult WriterLogin(Writer p)
+        {
+            var hashedPassword = Crypto.Hash(p.WriterPassword, "MD5");
+            var writerUserInfo = writerManager.GetList().FirstOrDefault(x => x.WriterMail == p.WriterMail && x.WriterPassword == hashedPassword);
+            if (writerUserInfo != null)
+            {
+                FormsAuthentication.SetAuthCookie(writerUserInfo.WriterMail, false);
+                Session["WriterMail"] = writerUserInfo.WriterMail;
+                Session["WriterID"] = writerUserInfo.WriterID;
+                Session["WriterFullName"] = writerUserInfo.WriterName+" "+writerUserInfo.WriterSurname;
+                return RedirectToAction("MyContent", "WriterPanelContent");
+            }
+            else
+            {
+                ViewBag.Message = "Kullanıcı adı veya şifre hatalı!";
+            }
+            return View();
+        }
+        public ActionResult LogOut()
+        {
+            FormsAuthentication.SignOut();
+            Session.Abandon();
+            return RedirectToAction("WriterLogin", "Login");
         }
     }
 }

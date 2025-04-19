@@ -5,6 +5,7 @@ using EntityLayer.Concrate;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 
@@ -15,6 +16,7 @@ namespace MVC_ProjeKampi.Controllers
         ContactManager cm = new ContactManager(new EFContactDAL());
         MessageManager mm = new MessageManager(new EFMessageDAL());
         ContactValidator cv = new ContactValidator();
+        string mail = "admin @gmail.com";
         public ActionResult Index()
         {
             var contactValues = cm.GetList();
@@ -55,13 +57,13 @@ namespace MVC_ProjeKampi.Controllers
             var contactCount = cm.GetList().Count();
             ViewBag.contactCount = contactCount;
 
-            var inboxCount = mm.GetListInbox().Where(m=>m.IsRead==false).Count();
+            var inboxCount = mm.GetListInbox(mail).Where(m=>m.IsRead==false).Count();
             ViewBag.inboxCount = inboxCount;
 
-            var sendboxCount = mm.GetListSendbox().Where(m=>m.IsDraft==false).Count();
+            var sendboxCount = mm.GetListSendbox(mail).Where(m=>m.IsDraft==false).Count();
             ViewBag.sendboxCount = sendboxCount;
 
-            var draftCount = mm.GetListSendbox().Where(m => m.IsDraft == true).Count();
+            var draftCount = mm.GetListSendbox(mail).Where(m => m.IsDraft == true).Count();
             ViewBag.draftCount = draftCount;
             return PartialView();
         }

@@ -29,7 +29,7 @@ img{max-width:100%;}
 /*--end reset--*/
 body {
    font-family: 'Open Sans', sans-serif !important;
-   background: url('../images/5.jpg') no-repeat center center fixed;
+   background: url('/AdminLTE-3.0.4/Skills/images/5.jpg') no-repeat center center fixed;
     background-size: cover;
     height: 100%;
 }
@@ -102,7 +102,7 @@ p {
 }
 .profile-grid img {
   border-radius: 50%;
-  border: 4px solid #EF9F2B;
+  border: 4px solid #9d1f1f;
 }
 .profile-grid h2 {
     font-size: 1.8em;
