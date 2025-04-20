@@ -11,11 +11,12 @@ using System.Web.Helpers;
 
 namespace MVC_ProjeKampi.Controllers
 {
+    [AllowAnonymous]
     public class LoginController : Controller
     {
         AdminManager adminManager = new AdminManager(new EFAdminDAL());
         WriterManager writerManager = new WriterManager(new EFWriterDAL());
-
+        
         [HttpGet]
         public ActionResult Index()
         {
@@ -72,7 +73,7 @@ namespace MVC_ProjeKampi.Controllers
         {
             FormsAuthentication.SignOut();
             Session.Abandon();
-            return RedirectToAction("WriterLogin", "Login");
+            return RedirectToAction("Headings", "Default");
         }
     }
 }

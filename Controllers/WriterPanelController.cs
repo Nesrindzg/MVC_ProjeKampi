@@ -25,6 +25,12 @@ namespace MVC_ProjeKampi.Controllers
             return View(values);
         }
 
+        public ActionResult AllHeading()
+        {
+            var values = hm.GetList();
+            return View(values);
+        }
+
         [HttpGet]
         public ActionResult NewHeading()
         {
@@ -42,7 +48,8 @@ namespace MVC_ProjeKampi.Controllers
         public ActionResult NewHeading(Heading p)
         {
             p.HeadingTime = DateTime.Parse(DateTime.Now.ToShortDateString());
-            p.WriterID = 1;
+            int id = Convert.ToInt32(Session["WriterID"]);
+            p.WriterID = id;
             p.HeadingStatus = true;
             hm.AddHeading(p);
             return RedirectToAction("MyHeading");

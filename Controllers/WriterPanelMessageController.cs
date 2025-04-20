@@ -36,8 +36,12 @@ namespace MVC_ProjeKampi.Controllers
         }
         public ActionResult GetMessageRead(int id)
         {
+            var mail = Session["WriterMail"].ToString();
             var message = mm.GetById(id);
-            message.IsRead = true;
+            if (message.SenderMail!=mail)
+            {
+                message.IsRead = true;
+            }
             mm.UpdateMessage(message);
             return View(message);
         }
