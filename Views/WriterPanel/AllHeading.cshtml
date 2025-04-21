@@ -1,6 +1,7 @@
 ﻿@using EntityLayer.Concrate
-@model List<Heading>
-
+@model PagedList.IPagedList<Heading>
+@using PagedList.Mvc;
+@using PagedList;
 @{
     ViewBag.Title = "AllHeading";
     Layout = "~/Views/Shared/_WriterLayout.cshtml";
@@ -73,11 +74,11 @@
                             var activeColor = item.HeadingStatus ? "success" : "danger";
                             var activeReverseText = item.HeadingStatus ? "Pasif Yap" : "Aktif Yap";
                             <tr>
-                                <td>
+                                <td class="font-weight-bold">
                                     @item.HeadingID
                                 </td>
                                 <td>
-                                    <a>
+                                    <a class="font-weight-bold">
                                         @item.HeadingName
                                     </a>
                                     <br />
@@ -120,4 +121,14 @@
 </body>
 </html>
 
+<div class="pagination justify-content-center">
+    @Html.PagedListPager(
+    Model,
+    page => Url.Action("AllHeading", new { page }),
+    new PagedListRenderOptions
+    {
+        LiElementClasses = new[] { "page-link" },
+    }
+    )
+</div>
 

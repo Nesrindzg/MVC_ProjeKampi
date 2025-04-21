@@ -10,11 +10,13 @@ using System.Web.Mvc;
 
 namespace MVC_ProjeKampi.Controllers
 {
+    [Authorize]
     public class MessageController : Controller
     {
         MessageManager mm = new MessageManager(new EFMessageDAL());
         MessageValidator mv = new MessageValidator();
         string mail = "admin@gmail.com";
+
         public ActionResult Inbox()
         {
             var messageList = mm.GetListInbox(mail);

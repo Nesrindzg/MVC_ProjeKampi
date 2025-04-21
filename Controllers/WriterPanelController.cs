@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
+using PagedList.Mvc;
 
 namespace MVC_ProjeKampi.Controllers
 {
@@ -25,9 +27,9 @@ namespace MVC_ProjeKampi.Controllers
             return View(values);
         }
 
-        public ActionResult AllHeading()
+        public ActionResult AllHeading(int page=1)
         {
-            var values = hm.GetList();
+            var values = hm.GetList().ToPagedList(page,5);
             return View(values);
         }
 
