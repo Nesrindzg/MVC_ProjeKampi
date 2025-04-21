@@ -8,6 +8,8 @@ using System.Web;
 using System.Web.Mvc;
 using PagedList;
 using PagedList.Mvc;
+using BusinessLayer.ValidationRules;
+using FluentValidation.Results;
 
 namespace MVC_ProjeKampi.Controllers
 {
@@ -15,8 +17,32 @@ namespace MVC_ProjeKampi.Controllers
     {
         HeadingManager hm= new HeadingManager(new EFHeadingDAL());
         CategoryManager cm = new CategoryManager(new EFCategoryDAL());
+        WriterManager wm = new WriterManager(new EFWriterDAL());
+        WriterValidator writerValidator = new WriterValidator();
+
+        [HttpGet]
         public ActionResult WriterProfile()
         {
+            int id = Convert.ToInt32(Session["WriterID"]);
+            var writerValue = wm.GetByID(id);
+            return View(writerValue);
+        }
+        [HttpPost]
+        public ActionResult WriterProfile(Writer p)
+        {
+            ValidationResult result = writerValidator.Validate(p);
+            if (result.IsValid)
+            {
+                wm.UpdateWriter(p);
+                return RedirectToAction("AllHeading");
+            }
+            else
+            {
+                foreach (var item in result.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+            }
             return View();
         }
 

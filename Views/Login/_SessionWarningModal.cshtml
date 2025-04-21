@@ -1,0 +1,21 @@
+﻿<!-- Session Uyarı Modalı -->
+<div class="modal fade" id="sessionWarningModal" tabindex="-1" aria-labelledby="sessionWarningLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content text-center">
+            <div class="modal-header">
+                <h5 class="modal-title w-100" id="sessionWarningLabel">Oturum Süresi Dolmak Üzere</h5>
+            </div>
+            <div class="modal-body">
+                Oturumunuz 1 dakika içinde sona erecek.<br>
+                Lütfen devam etmek için <strong>"Oturumu Aktif Tut"</strong> butonuna tıklayın.
+                <div class="mt-3">
+                    <span id="countdownText" class="fw-bold text-danger fs-5"></span>
+                </div>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-success" onclick="refreshSession()">Oturumu Aktif Tut</button>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -75,5 +75,10 @@ namespace MVC_ProjeKampi.Controllers
             Session.Abandon();
             return RedirectToAction("Headings", "Default");
         }
+        public ActionResult KeepAlive()
+        {
+            return new HttpStatusCodeResult(200);
+        }
+
     }
 }

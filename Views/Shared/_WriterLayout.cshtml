@@ -51,7 +51,7 @@
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
                         <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link">
+                            <a href="/WriterPanel/WriterProfile" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
                                     Profilim
@@ -119,6 +119,8 @@
             <div class="content">
                 <br />
                 @RenderBody()
+                <!-- Session Uyarı Modalı -->
+                @Html.Partial("~/Views/Login/_SessionWarningModal.cshtml")
                 <!-- /.container-fluid -->
             </div>
             <!-- /.content -->
@@ -137,6 +139,14 @@
     <script src="~/AdminLTE-3.0.4/plugins/chart.js/Chart.min.js"></script>
     <script src="~/AdminLTE-3.0.4/dist/js/demo.js"></script>
     <script src="~/AdminLTE-3.0.4/dist/js/pages/dashboard3.js"></script>
+    @if (Session["WriterFullName"] != null)
+    {
+        <script src="~/Scripts/SessionControls.js"></script>
+        <script>
+            initSessionWarning();
+        </script>
+    }
+
 </body>
 </html>
 
