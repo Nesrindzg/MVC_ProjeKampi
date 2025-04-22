@@ -28,6 +28,7 @@ namespace MVC_ProjeKampi.Controllers
             return View();
         }
 
+        [AllowAnonymous]
         [HttpPost]
         public ActionResult AddWriter(Writer p)
         {

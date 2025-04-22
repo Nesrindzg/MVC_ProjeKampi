@@ -54,9 +54,11 @@ namespace MVC_ProjeKampi.Controllers
         public ActionResult WriterLogin(Writer p)
         {
             var hashedPassword = Crypto.Hash(p.WriterPassword, "MD5");
-            var writerUserInfo = writerManager.GetList().FirstOrDefault(x => x.WriterMail == p.WriterMail && x.WriterPassword == hashedPassword);
+            var writerUserInfo = writerManager.GetList().FirstOrDefault(x => x.WriterMail == p.WriterMail && (x.WriterPassword == p.WriterPassword || x.WriterPassword==hashedPassword));
             if (writerUserInfo != null)
             {
+                p.WriterPassword = hashedPassword;
+                writerManager.UpdateWriter(writerUserInfo); // Şifreyi güncellemek için
                 FormsAuthentication.SetAuthCookie(writerUserInfo.WriterMail, false);
                 Session["WriterMail"] = writerUserInfo.WriterMail;
                 Session["WriterID"] = writerUserInfo.WriterID;
@@ -73,7 +75,7 @@ namespace MVC_ProjeKampi.Controllers
         {
             FormsAuthentication.SignOut();
             Session.Abandon();
-            return RedirectToAction("Headings", "Default");
+            return RedirectToAction("HomePage", "Home");
         }
         public ActionResult KeepAlive()
         {
