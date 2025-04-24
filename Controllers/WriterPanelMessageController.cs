@@ -15,17 +15,17 @@ namespace MVC_ProjeKampi.Controllers
     {
         MessageManager mm = new MessageManager(new EFMessageDAL());
         MessageValidator mv = new MessageValidator();
-        
+        string p = "";
         public ActionResult Inbox()
         {
             var mail = Session["WriterMail"].ToString();
-            var messageList = mm.GetListInbox(mail);
+            var messageList = mm.GetListInbox(mail, p);
             return View(messageList);
         }
         public ActionResult Sendbox()
         {
             var mail = Session["WriterMail"].ToString();
-            var messageList = mm.GetListSendbox(mail);
+            var messageList = mm.GetListSendbox(mail, p);
             return View(messageList);
         }
 
@@ -49,13 +49,13 @@ namespace MVC_ProjeKampi.Controllers
         public PartialViewResult _MessageListMenu()
         {
             var mail = Session["WriterMail"].ToString();
-            var inboxCount = mm.GetListInbox(mail).Where(m => m.IsRead == false).Count();
+            var inboxCount = mm.GetListInbox(mail, p).Where(m => m.IsRead == false).Count();
             ViewBag.inboxCount = inboxCount;
 
-            var sendboxCount = mm.GetListSendbox(mail).Where(m => m.IsDraft == false).Count();
+            var sendboxCount = mm.GetListSendbox(mail, p).Where(m => m.IsDraft == false).Count();
             ViewBag.sendboxCount = sendboxCount;
 
-            var draftCount = mm.GetListSendbox(mail).Where(m => m.IsDraft == true).Count();
+            var draftCount = mm.GetListSendbox(mail, p).Where(m => m.IsDraft == true).Count();
             ViewBag.draftCount = draftCount;
             return PartialView();
         }
@@ -102,7 +102,7 @@ namespace MVC_ProjeKampi.Controllers
         public ActionResult DraftMessage()
         {
             var mail = Session["WriterMail"].ToString();
-            var values = mm.GetListSendbox(mail).Where(x => x.IsDraft == true).ToList();
+            var values = mm.GetListSendbox(mail, p).Where(x => x.IsDraft == true).ToList();
             return View(values);
         }
 

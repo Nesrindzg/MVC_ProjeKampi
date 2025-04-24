@@ -18,14 +18,17 @@
                     <div class="card-header">
                         <h3 class="card-title">Site İçi Mesajlar</h3>
                         <div class="card-tools">
-                            <div class="input-group input-group-sm">
-                                <input type="text" class="form-control" placeholder="Mail Kutusunda Ara">
-                                <div class="input-group-append">
-                                    <div class="btn btn-primary">
-                                        <i class="fas fa-search"></i>
+                            @using (Html.BeginForm("Index", "Contact", FormMethod.Post))
+                            {
+                                <div class="input-group input-group-sm">
+                                    <input type="text" name="p" class="form-control" placeholder="Mail Kutusunda Ara">
+                                    <div class="input-group-append">
+                                        <button type="submit" class="btn btn-primary">
+                                            <i class="fas fa-search"></i>
+                                        </button>
                                     </div>
                                 </div>
-                            </div>
+                            }
                         </div>
                         <!-- /.card-tools -->
                     </div>
@@ -53,11 +56,12 @@
                             </div>
                             <!-- /.float-right -->
                         </div>
-                        @foreach (var item in Model)
-                        {
-                            <div class="table-responsive mailbox-messages">
-                                <table class="table table-hover table-striped">
-                                    <tbody>
+
+                        <div class="table-responsive mailbox-messages">
+                            <table class="table table-hover table-striped">
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
                                         <tr>
                                             <td>
                                                 <div class="icheck-primary">
@@ -73,11 +77,12 @@
                                             <td class="mailbox-attachment"></td>
                                             <td class="mailbox-date">@item.MessageDate.ToShortDateString()</td>
                                         </tr>
-                                    </tbody>
-                                </table>
-                                <!-- /.table -->
-                            </div>
-                        }
+                                    }
+                                </tbody>
+                            </table>
+                            <!-- /.table -->
+                        </div>
+
                         <!-- /.mail-box-messages -->
                     </div>
                     <!-- /.card-body -->

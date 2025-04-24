@@ -17,11 +17,22 @@ namespace MVC_ProjeKampi.Controllers
         MessageManager mm = new MessageManager(new EFMessageDAL());
         ContactValidator cv = new ContactValidator();
         string mail = "admin @gmail.com";
+
+        [HttpGet]
         public ActionResult Index()
         {
-            var contactValues = cm.GetList();
+            var contactValues = cm.GetList("");
             return View(contactValues);
         }
+
+        [HttpPost]
+        public ActionResult Index(string p)
+        {
+            var contactValues = cm.GetList(p);
+            return View(contactValues);
+        }
+
+
         [HttpGet]
         public ActionResult AddContact()
         {
@@ -54,16 +65,16 @@ namespace MVC_ProjeKampi.Controllers
 
         public PartialViewResult _ContactLeftBox()
         {
-            var contactCount = cm.GetList().Count();
+            var contactCount = cm.GetList("").Count();
             ViewBag.contactCount = contactCount;
-
-            var inboxCount = mm.GetListInbox(mail).Where(m=>m.IsRead==false).Count();
+            string p = "";
+            var inboxCount = mm.GetListInbox(mail,p).Where(m => m.IsRead == false).Count();
             ViewBag.inboxCount = inboxCount;
 
-            var sendboxCount = mm.GetListSendbox(mail).Where(m=>m.IsDraft==false).Count();
+            var sendboxCount = mm.GetListSendbox(mail,p).Where(m => m.IsDraft == false).Count();
             ViewBag.sendboxCount = sendboxCount;
 
-            var draftCount = mm.GetListSendbox(mail).Where(m => m.IsDraft == true).Count();
+            var draftCount = mm.GetListSendbox(mail,p).Where(m => m.IsDraft == true).Count();
             ViewBag.draftCount = draftCount;
             return PartialView();
         }
@@ -71,5 +82,6 @@ namespace MVC_ProjeKampi.Controllers
         {
             return PartialView();
         }
+
     }
 }

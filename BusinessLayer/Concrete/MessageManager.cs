@@ -35,13 +35,18 @@ namespace BusinessLayer.Concrete
             return _messageDAL.Get(x => x.MessageID == id);
         }
 
-        public List<Message> GetListInbox(string mail)
+        public List<Message> GetList(string p)
         {
-            return _messageDAL.List(x => x.ReceiverMail == mail);
+            return _messageDAL.List(x => x.MessageContent == p);
         }
-        public List<Message> GetListSendbox(string mail)
+
+        public List<Message> GetListInbox(string mail, string p)
         {
-            return _messageDAL.List(x => x.SenderMail == mail);
+            return _messageDAL.List(x => x.ReceiverMail == mail && x.MessageContent.Contains(p));
+        }
+        public List<Message> GetListSendbox(string mail, string p)
+        {
+            return _messageDAL.List(x => x.SenderMail == mail && x.MessageContent.Contains(p));
         }
 
         public void UpdateMessage(Message Message)

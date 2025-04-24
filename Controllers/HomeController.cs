@@ -39,7 +39,7 @@ namespace MVC_ProjeKampi.Controllers
             ViewBag.HeadingCount = headingCount;
 
             ContentManager cm = new ContentManager(new EFContentDAL());
-            var contentCount = cm.GetList().Count;
+            var contentCount = cm.GetList("").Count;
             ViewBag.ContentCount = contentCount;
 
             CategoryManager catm = new CategoryManager(new EFCategoryDAL());

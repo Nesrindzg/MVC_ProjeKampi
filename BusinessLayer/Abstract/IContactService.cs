@@ -16,6 +16,6 @@ namespace BusinessLayer.Abstract
 
         // Read operations
         Contact GetById(int id);
-        List<Contact> GetList();
+        List<Contact> GetList(string p);
     }
 }

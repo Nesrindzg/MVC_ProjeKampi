@@ -62,7 +62,7 @@ namespace MVC_ProjeKampi.Controllers
                 FormsAuthentication.SetAuthCookie(writerUserInfo.WriterMail, false);
                 Session["WriterMail"] = writerUserInfo.WriterMail;
                 Session["WriterID"] = writerUserInfo.WriterID;
-                Session["WriterFullName"] = writerUserInfo.WriterName+" "+writerUserInfo.WriterSurname;
+                Session["WriterUserName"] = writerUserInfo.WriterName+" "+writerUserInfo.WriterSurname;
                 return RedirectToAction("MyContent", "WriterPanelContent");
             }
             else

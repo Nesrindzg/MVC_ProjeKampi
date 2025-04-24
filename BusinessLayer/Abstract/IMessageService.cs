@@ -16,7 +16,7 @@ namespace BusinessLayer.Abstract
 
         // Read operations
         Message GetById(int id);
-        List<Message> GetListInbox(string mail);
-        List<Message> GetListSendbox(string mail);
+        List<Message> GetListInbox(string mail,string p);
+        List<Message> GetListSendbox(string mail, string p);
     }
 }

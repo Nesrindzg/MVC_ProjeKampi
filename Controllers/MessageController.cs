@@ -17,14 +17,30 @@ namespace MVC_ProjeKampi.Controllers
         MessageValidator mv = new MessageValidator();
         string mail = "admin@gmail.com";
 
+        [HttpGet]
         public ActionResult Inbox()
         {
-            var messageList = mm.GetListInbox(mail);
+            var messageList = mm.GetListInbox(mail,"");
             return View(messageList);
         }
+        [HttpPost]
+        public ActionResult Inbox(string p)
+        {
+            var messageList = mm.GetListInbox(mail, p);
+            return View(messageList);
+        }
+
+        [HttpGet]
         public ActionResult Sendbox()
         {
-            var messageList = mm.GetListSendbox(mail);
+            var messageList = mm.GetListSendbox(mail,"");
+            return View(messageList);
+        }
+
+        [HttpPost]
+        public ActionResult Sendbox(string p)
+        {
+            var messageList = mm.GetListSendbox(mail, p);
             return View(messageList);
         }
 
@@ -69,7 +85,7 @@ namespace MVC_ProjeKampi.Controllers
       
         public ActionResult DraftMessage()
         {
-            var values = mm.GetListSendbox(mail).Where(x => x.IsDraft == true).ToList();
+            var values = mm.GetListSendbox(mail,"").Where(x => x.IsDraft == true).ToList();
             return View(values);
         }
 
@@ -84,6 +100,20 @@ namespace MVC_ProjeKampi.Controllers
             message.IsRead = true;
             mm.UpdateMessage(message);
             return View(message);
+        }
+
+        [HttpGet]
+        public ActionResult Index()
+        {
+            var contactValues = mm.GetList("");
+            return View(contactValues);
+        }
+
+        [HttpPost]
+        public ActionResult Index(string p)
+        {
+            var contactValues = mm.GetList(p);
+            return View(contactValues);
         }
     }
 }
