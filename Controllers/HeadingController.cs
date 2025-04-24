@@ -47,6 +47,7 @@ namespace MVC_ProjeKampi.Controllers
         public ActionResult AddHeading(Heading p)
         {
             p.HeadingTime = DateTime.Parse(DateTime.Now.ToShortDateString());
+            p.HeadingStatus = true;
             hm.AddHeading(p);
             return RedirectToAction("Index");
         }
