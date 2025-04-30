@@ -18,6 +18,16 @@ namespace BusinessLayer.Concrete
             _adminDAL = adminDAL;
         }
 
+        public void AddAdmin(Admin admin)
+        {
+            _adminDAL.Insert(admin);
+        }
+
+        public void DeleteAdmin(Admin admin)
+        {
+            _adminDAL.Update(admin);
+        }
+
         public List<Admin> GetList()
         {
             return _adminDAL.List();

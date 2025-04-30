@@ -20,5 +20,7 @@ namespace EntityLayer.Concrate
 
         [StringLength(1)]
         public string AdminRole { get; set; }
+
+        public bool AdminStatus { get; set; }
     }
 }

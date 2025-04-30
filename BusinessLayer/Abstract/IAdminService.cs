@@ -13,5 +13,7 @@ namespace BusinessLayer.Abstract
         List<Admin> GetList();
 
         void UpdateAdmin(Admin admin);
+        void AddAdmin(Admin admin);
+        void DeleteAdmin(Admin admin);
     }
 }

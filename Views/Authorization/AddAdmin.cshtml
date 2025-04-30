@@ -1,0 +1,35 @@
+﻿@model EntityLayer.Concrate.Admin
+@{
+    ViewBag.Title = "AddAdmin";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container" style="height: 90vh;">
+    <div class="row h-100 justify-content-center align-items-center">
+        <div class="col-md-6">
+            @using (Html.BeginForm("AddAdmin", "Authorization", FormMethod.Post))
+            {
+                <div class="bg-light p-5 border shadow-lg rounded">
+                    <h4 class="text-center mb-4">Yeni Admin Ekranı</h4>
+                    @Html.HiddenFor(m => m.AdminID)
+                    <div class="form-group mb-3">
+                        @Html.Label("Kullanıcı Adı", new { @class = "form-label" })
+                        @Html.TextBoxFor(m => m.AdminUserName, new { @class = "form-control", placeholder = "Kullanıcı Adını Giriniz", @required = "required" })
+                    </div>
+                    <div class="form-group mb-3">
+                        @Html.Label("Şifre", new { @class = "form-label" })
+                        @Html.TextBoxFor(m => m.AdminPassword, new { @class = "form-control", placeholder = "Şifre Giriniz", @required = "required" })
+                    </div>
+                    <div class="form-group mb-4">
+                        @Html.Label("Yetki", new { @class = "form-label" })
+                        @Html.TextBoxFor(m => m.AdminRole, new { @class = "form-control", placeholder = "Rol Giriniz", @required = "required" })
+                    </div>
+
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">Admin Ekle</button>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
