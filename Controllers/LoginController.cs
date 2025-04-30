@@ -35,6 +35,7 @@ namespace MVC_ProjeKampi.Controllers
                 //adminManager.UpdateAdmin(adminUserInfo);
                 FormsAuthentication.SetAuthCookie(adminUserInfo.AdminUserName, false);
                 Session["AdminUserName"] = adminUserInfo.AdminUserName;
+                TempData["LoginSuccess"] = "Başarılı";
                 return RedirectToAction("MySkills", "AdminCategory");
             }
             else

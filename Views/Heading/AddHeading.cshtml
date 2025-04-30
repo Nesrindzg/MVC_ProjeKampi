@@ -22,5 +22,6 @@
         @Html.DropDownListFor(m => m.WriterID, (List<SelectListItem>)ViewBag.Writers, "Yazar Seçiniz", new { @class = "form-control" })
         @Html.ValidationMessageFor(m => m.WriterID, "", new { @class = "text-danger" })
     </div>
-    <button class="btn btn-outline-dark">Başlık Ekle</button>
+    <button class="btn btn-outline-dark" id="btn_add">Başlık Ekle</button>
 }
+
