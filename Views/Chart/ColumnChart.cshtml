@@ -1,0 +1,93 @@
+﻿
+@{
+    ViewBag.Title = "ColumnChart";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Kategori-Blog</title>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                contentType: "application/json",
+                url: '@Url.Action("ContentListChart", "Chart")',
+                success: function (result) {
+                    google.charts.load('current', {
+                        'packages': ['corechart']
+                    });
+                    google.charts.setOnLoadCallback(function () {
+                        drawChart(result);
+                    });
+                }
+            });
+        });
+
+        function drawChart(result) {
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Kategori Adı');
+            data.addColumn('number', 'İçerik Sayısı');
+            data.addColumn({ type: 'string', role: 'style' }); // Renk kolonu eklendi
+
+            var colors = [
+                '#3498db', '#e74c3c', '#2ecc71', '#9b59b6', '#f1c40f',
+                '#1abc9c', '#e67e22', '#34495e', '#7f8c8d', '#d35400'
+            ];
+
+            var dataArray = [];
+            $.each(result, function (i, obj) {
+                var color = colors[i % colors.length]; // Renkleri sırayla döndür
+                dataArray.push([obj.CategoryName, obj.CategoryCount, `color: ${color}`]);
+            });
+            data.addRows(dataArray);
+
+            var options = {
+                title: "Kategoriye Göre İçerik Sayısı",
+                titleTextStyle: {
+                    fontSize: 24,
+                    bold: true,
+                    color: '#4a4a4a'
+                },
+                width: 1000,
+                height: 600,
+                bar: { groupWidth: "60%" },
+                legend: { position: "none" },
+                animation: {
+                    startup: true,
+                    duration: 1000,
+                    easing: 'out'
+                },
+                hAxis: {
+                    title: 'Kategori',
+                    titleTextStyle: { fontSize: 16 },
+                    slantedText: true,
+                    slantedTextAngle: 45
+                },
+                vAxis: {
+                    title: 'İçerik Sayısı',
+                    titleTextStyle: { fontSize: 16 },
+                    minValue: 0
+                },
+                
+                backgroundColor: '#f9f9f9'
+            };
+
+            var chart = new google.visualization.ColumnChart(document.getElementById('Columnchart_div'));
+            chart.draw(data, options);
+        }
+
+    </script>
+</head>
+<body>
+    <div id="Columnchart_div" class="justify-content-center d-flex"></div>
+</body>
+</html>
+
+
+
